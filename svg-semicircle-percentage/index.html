@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SVG Semicircle</title>
+  <link rel="stylesheet" href="../style.css" />
   <style>
     svg {
       border: 1px solid #777;
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     semiCircle({ length: [0, percent], center, radius: r, className: 'red' }),
   )
 
-  const subdivisions = 32
+  const subdivisions = 50
   const dots = []
   for (let i = 0; i < subdivisions; i++) {
     const percent = i * (100 / subdivisions)
