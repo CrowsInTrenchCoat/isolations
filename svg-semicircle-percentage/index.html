@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SVG Semicircle Percentage</title>
+  <title>SVG Semicircle</title>
   <style>
     svg {
       border: 1px solid #777;
@@ -43,6 +43,8 @@
   </style>
 </head>
 <body>
+  <h1>SVG Semicircle</h1>
+  <p>Draw an <abbr title="Scalable Vector Graphics">SVG</abbr> semicircle path at a given percentage.</p>
   <svg id="circle" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
   <br>
   <input id="range" type="range" min="0" max="100">
@@ -53,10 +55,6 @@
     max="100"
   />
 <script>
-
-
-const f3 = (n) => n * (Math.sqrt(2) - 1) / 3
-
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -100,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const rangeInput = document.getElementById('range')
   if (rangeInput) {
     rangeInput.value = percent
-    document.addEventListener('change', handleChangePercent)
+    document.addEventListener('input', handleChangePercent)
   }
 
   function handleChangePercent (event) {
