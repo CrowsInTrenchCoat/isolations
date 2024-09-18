@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Semicircle Percentage</title>
+  <style>
+    svg {
+      border: 1px solid #777;
+    }
+    .blue {
+      transition: fill 250ms ease;
+      fill: lightblue;
+      stroke: #999;
+      &:hover {
+        fill: blue;
+      }
+    }
+    .green {
+      transition: fill 250ms ease;
+      fill: lightgreen;
+      stroke: #999;
+      &:hover {
+        fill: green;
+      }
+    }
+    .red {
+      transition: fill 250ms ease;
+      fill: pink;
+      stroke: #999;
+      &:hover {
+        fill: red;
+      }
+    }
+    .yellow {
+      transition: fill 250ms ease;
+      fill: lightyellow;
+      stroke: #999;
+      &:hover {
+        fill: yellow;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg id="circle" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
+  <br>
+  <input id="range" type="range" min="0" max="100">
+  <input
+    id="percent"
+    type="number"
+    min="0"
+    max="100"
+  />
+<script>
+
+
+const f3 = (n) => n * (Math.sqrt(2) - 1) / 3
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Configuration
+  const diameter = 300
+  const padding = 20
+
+  // Dynamic
+  const d = diameter
+  const r = (d / 2) - padding
+  const center = { x: 0, y: 0 }
+
+  const calcPoint = calc(r, center)
+
+  // Mutable state
+  let percent = 100
+
+  const svg = document.getElementById('circle')
+    svg.setAttribute('width', d)
+    svg.setAttribute('height', d)
+    svg.setAttribute('viewBox', `${d/2 * -1} ${d/2 * -1} ${d} ${d}`)
+
+  svg.append(
+    semiCircle({ length: [0, percent], center, radius: r, className: 'red' }),
+  )
+
+  const subdivisions = 32
+  const dots = []
+  for (let i = 0; i < subdivisions; i++) {
+    const percent = i * (100 / subdivisions)
+    dots.push(dot(calcPoint(percent), '#999'))
+  }
+  svg.append(...dots)
+
+  const numberInput = document.getElementById('percent')
+  if (numberInput) {
+    numberInput.value = percent
+    document.addEventListener('change', handleChangePercent)
+  }
+
+  const rangeInput = document.getElementById('range')
+  if (rangeInput) {
+    rangeInput.value = percent
+    document.addEventListener('change', handleChangePercent)
+  }
+
+  function handleChangePercent (event) {
+    percent = event.target.value
+    if (rangeInput) {
+      rangeInput.value = percent
+    }
+    if (numberInput) {
+      numberInput.value = percent
+    }
+    const path = svg.querySelector('.semi-circle')
+    svg.replaceChild(
+      semiCircle({ length: [0, percent], center, radius: r, className: 'red' }),
+      path
+    )
+  }
+
+  function calc (radius, center) {
+    return (percent) => {
+      percent = percent - 25 // Reset zero point to 12 o'clock.
+      const angle = (percent - 0) * (360 - 0) / (100 - 0) + 0
+      const radians = (Math.PI / 180) * angle;
+      return {
+        x: center.x + radius * Math.cos(radians),
+        y: center.y + radius * Math.sin(radians),
+      }
+    }
+  }
+
+  function semiCircle (props) {
+    const { className, radius: r, center, length } = props
+
+    const getCoords = calc(r, center)
+    const percent = length[1] - length[0]
+    const start = getCoords(length[0])
+    const end = getCoords(length[1])
+
+    const el = percent === 100
+      ? document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+      : document.createElementNS('http://www.w3.org/2000/svg', 'path')
+
+    el.setAttribute('data-percent', String(percent))
+    el.classList.add('semi-circle')
+    el.classList.add(className)
+
+    if (el.tagName === 'circle') {
+      el.setAttribute('cx', 0)
+      el.setAttribute('cy', 0)
+      el.setAttribute('r', r)
+      return el
+    } else {
+      const largeArc = percent > 50 ? 1 : 0
+      const sweep = 1
+      const rotation = 0
+      el.setAttribute('d', ''
+        + `M ${center.x} ${center.y} `
+        + `L ${start.x} ${start.y} `
+        + `A ${r} ${r} ${rotation} ${largeArc} ${sweep} ${end.x} ${end.y} `
+        + 'Z'
+      )
+    }
+
+    return el
+  }
+
+  function dot (coords, fill) {
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    c.setAttribute('fill', fill || '#333')
+    c.setAttribute('cx', coords.x)
+    c.setAttribute('cy', coords.y)
+    c.setAttribute('r', 2)
+    return c
+  }
+})
+</script>
+</body>
+</html>
