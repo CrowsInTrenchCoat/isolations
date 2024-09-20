@@ -1,9 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 
-import { readWholeNumber } from './read-whole-number'
-import { SvgCircle, SvgCircleProps } from './svg-circle'
-import { SvgSemicirclePath } from './svg-semicircle-path'
-import { calcCircularCoordinates } from './calc-circular-coordinates'
+import { readWholeNumber } from '@/lib/read-whole-number'
+import { SvgCircle, SvgCircleProps } from '@/components/svg-circle'
+import { SvgSemicircle } from '@/components/svg-semicircle'
+import { calcCircularCoordinates } from '@/lib/calc-circular-coordinates'
 
 export interface SvgProps {
   diameter : number,
@@ -50,11 +50,10 @@ export function Svg (props : SvgProps) {
             className="blue"
             radius={radius}
           />
-        : <SvgSemicirclePath
+        : <SvgSemicircle
             center={center}
             className="blue"
             range={[ 0, percent ]}
-            percent={percent}
             radius={radius}
           />
       }

@@ -4,7 +4,12 @@ export default function Home () {
   return (
     <div>
       <main>
-        <Link href="/svg-draw-semicircle">Semicircle</Link>
+        <nav>
+          <h2>Circles</h2>
+          <ul>
+            <li><Link href="/svg-draw-semicircle">Semicircle</Link></li>
+          </ul>
+        </nav>
       </main>
     </div>
   )

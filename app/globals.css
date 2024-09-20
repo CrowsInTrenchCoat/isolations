@@ -8,7 +8,8 @@ html {
 }
 
 body {
-  padding: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 abbr {
@@ -16,4 +17,19 @@ abbr {
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: 3px;
+}
+
+#nameplate {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  h1 {
+    font-size: 2rem;
+  }
+  a {
+    color: #fff;
+  }
+}
+main {
+  padding: 1rem;
 }
