@@ -1,3 +1,5 @@
+`client:only`
+
 document.addEventListener('DOMContentLoaded', function () {
   // Configuration
   const diameter = 300
