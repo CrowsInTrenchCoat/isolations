@@ -1,8 +1,10 @@
-export default function Home() {
+import Link from 'next/link'
+
+export default function Home () {
   return (
     <div>
       <main>
-        HI
+        <Link href="/svg-draw-semicircle">Semicircle</Link>
       </main>
     </div>
   )

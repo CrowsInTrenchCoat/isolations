@@ -1,0 +1,36 @@
+.box {
+  border: 1px solid #ccc;
+  border-radius: 0.75rem 0.75rem 0.5rem 0.5rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 250ms ease;
+  &:focus,
+  &:focus-within,
+  &:hover {
+    border-color: #b6b6b6;
+    box-shadow: 0 0 0.35rem rgba(0, 0, 0, 0.5);
+  }
+}
+.actions {
+  background-color: #edf4ff;
+  border-top: 1px solid #ccc;
+  border-radius: 0 0 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  input[type="number"] {
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    text-align: right;
+  }
+}
+.blue {
+  transition: fill 250ms ease;
+  fill: #4287f5;
+  stroke: #999;
+  &:hover {
+    fill: #3461a8;
+  }
+}
