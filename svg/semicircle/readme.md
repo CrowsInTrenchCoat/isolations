@@ -1,6 +1,8 @@
 # SVG Semicircle
 
-A React component that renders an SVG [`<path>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) in the shape of a semicircle.
+A React component that renders an SVG [`<path>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) element in the shape of a semicircle.
+
+## Why?
 
 This component is intended to be used to draw an individual slice of a pie chart.
 
@@ -31,6 +33,6 @@ This component understands percentages as they exist on a twelve-hour circluar c
 ## Drawing Strategy
 
 - Move to `center` point.
-- Line to the point on the circumference indicated by `range[0]`.
-- Arc to the circumference indicated by `range[1]`.
+- Line to the point on the circumference indicated by the value of `start`.
+- Arc to the circumference indicated by the value of `stop`.
 - Close the path at the center point.
