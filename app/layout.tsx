@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import "./globals.css"
+import "./globals.scss"
 import { Nameplate } from './nameplate'
 
 export const metadata: Metadata = {
