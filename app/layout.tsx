@@ -16,7 +16,12 @@ export default function RootLayout(props : RootLayoutProps) {
     <html lang="en">
       <body>
         <Nameplate />
-        {children}
+        <main id="content">
+          {children}
+        </main>
+        <footer id="footer">
+          <a className="repo-link" href="https://github.com/CrowsInTrenchCoat/isolations">GitHub Repo</a>
+        </footer>
       </body>
     </html>
   )

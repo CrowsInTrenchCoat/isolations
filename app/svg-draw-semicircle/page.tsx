@@ -8,14 +8,12 @@ import './style.scss'
 
 export default function Page () {
   return (
-    <div>
-      <main>
-        <h1>SVG Semicircle</h1>
-        <SvgArtboardControlled diameter={300} padding={20} percent={0} />
-        <div className="description">
-          <Description />
-        </div>
-      </main>
-    </div>
+    <>
+      <h1>SVG Semicircle</h1>
+      <SvgArtboardControlled diameter={300} padding={20} percent={0} />
+      <div className="description">
+        <Description />
+      </div>
+    </>
   )
 }

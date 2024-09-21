@@ -8,13 +8,13 @@ interface Coordinate {
 export interface SvgSemicircleProps extends SVGProps<SVGPathElement> {
   cx : number,
   cy : number,
+  r : number,
   start: number,
   stop: number,
-  radius : number,
 }
 
 export function SvgSemicircle (props : SvgSemicircleProps) {
-  const { cx, cy, d, radius, start, stop, ...atts } = props
+  const { cx, cy, d, r: radius, start, stop, ...atts } = props
 
   const percent = stop - start
 

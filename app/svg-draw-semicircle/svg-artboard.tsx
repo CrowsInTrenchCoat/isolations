@@ -57,9 +57,9 @@ export function SvgArtboard (props : SvgArtboardProps) {
         className="blue"
         cx={center.x}
         cy={center.y}
+        r={radius}
         start={0}
         stop={percent}
-        radius={radius}
       />
     </Svg>
   )

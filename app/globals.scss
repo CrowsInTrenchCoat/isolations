@@ -51,8 +51,12 @@ abbr {
     font-size: 2rem;
   }
 }
-main {
+#content {
   padding: 1rem;
+}
+#footer {
+  margin: 2rem 0;
+  text-align: center;
 }
 .description {
   max-width: 36rem;
@@ -68,4 +72,8 @@ main {
   width:1px;
   height:1px;
   overflow:hidden;
-  }
+}
+.repo-link {
+  color: #767676;
+  text-decoration: none
+}

@@ -4,17 +4,29 @@ A React component that renders an SVG [`<path>` element](https://developer.mozil
 
 This component is intended to be used to draw an individual slice of a pie chart.
 
-## Custom Props
+## Props
 
 Name     | Type     | Description
 -------- | -------- | ------------
-`center` | `Object` | Two dimensional coordinates indicating to point from which the semicircle originates. This prop uses the following interface: `{ x: number, y: number }`
-`range`  | `Array`  | The percentages
+`cx`     | `number` | The `x` axis coordinate of the center of the semicircle.
+`cy`     | `number` | The `y` axis coordinate of the center of the semicircle.
+`r`      | `number` | The radius of the semicircle.
+`start`  | `number` | The percentage of the circumference at which the semicircle begins. May be any value from zero to one hundred.
+`stop`   | `number` | The percentage of the circumference at which the semicircle ends. May be any value from zero to one hundred. The behavior of this coponent is undefined when this value is less than `start`.
 
+This component will also accept all props allowed by `SVGProps<SVGPathElement>`
 
-center : Coordinate,
-range : [ number, number ],
-radius : number,
+## Coordinates
+
+This component understands percentages as they exist on a twelve-hour circluar clockface. An increase in percentage indicates clockwise motion.
+
+ %  | Hour
+--: | -----
+  0 | 12 o'clock
+ 25 |  3 o'clock
+ 50 |  6 o'clock
+ 75 |  9 o'clock
+100 | 12 o'clock
 
 ## Drawing Strategy
 
