@@ -77,3 +77,73 @@ abbr {
   color: #767676;
   text-decoration: none
 }
+
+
+.box {
+  border: 1px solid #ccc;
+  border-radius: 0.75rem 0.75rem 0.5rem 0.5rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: box-shadow 250ms ease;
+  &:focus,
+  &:focus-within,
+  &:hover {
+    border-color: #b6b6b6;
+    box-shadow: 0 0 0.35rem rgba(0, 0, 0, 0.5);
+  }
+  &-preview {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-actions {
+    background-color: #edf4ff;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem;
+    label {
+      font-size: 0.875rem;
+    }
+    input[type="number"],
+    input[type="text"] {
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      &[disabled] {
+        background: #fff;
+      }
+    }
+    input[type="number"] {
+      text-align: right;
+    }
+  }
+}
+
+.number-range-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  input[type="number"] {
+    width: 3rem;
+  }
+}
+.text-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  label {
+    font-size: 0.875rem;
+  }
+  input[type="text"] {
+
+  }
+}
