@@ -7,6 +7,7 @@ export default function Home () {
         <nav>
           <h2>Circles</h2>
           <ul>
+            <li><Link href="/svg-moon">Moon</Link></li>
             <li><Link href="/svg-semicircle">Semicircle</Link></li>
           </ul>
         </nav>
