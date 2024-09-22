@@ -9,6 +9,7 @@ Colors
   --black: #131313;
   --hotpink: #ff69b4;
   --border-radius: 0.75rem;
+  --border-color: #b6b6b6;
 }
 
 html {
@@ -212,6 +213,29 @@ abbr {
       color: #767676;
       margin: 0;
       padding: 0;
+    }
+  }
+}
+
+
+
+.markdown {
+  table {
+    border: 1px solid var(--border-color);
+    border-collapse: collapse;
+    td, th {
+      border: 1px solid var(--border-color);
+      padding: 0.375rem 0.625rem;
+    }
+    thead {
+      th {
+        text-align: left;
+      }
+    }
+    code {
+      font-family: Hack, mono;
+      font-size: 0.875rem;
+      color: #333;
     }
   }
 }

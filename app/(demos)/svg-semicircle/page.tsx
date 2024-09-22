@@ -1,17 +1,15 @@
 'use client'
 
 import React from 'react'
-import Description from './page-description.mdx'
-import { SvgArtboardControlled } from './svg-artboard-controlled'
+import Copy from './page-copy.mdx'
+import { Markdown } from '@/app/markdown'
 
 export default function Page () {
   return (
     <>
-      <h1>SVG Semicircle</h1>
-      <SvgArtboardControlled diameter={300} padding={20} percent={0} />
-      <div className="description">
-        <Description />
-      </div>
+      <Markdown>
+        <Copy />
+      </Markdown>
     </>
   )
 }

@@ -1,0 +1,33 @@
+import { SvgArtboardControlled } from './svg-artboard-controlled'
+
+# Semicircle
+
+A React component that draws an <abbr title="Scalable Vector Graphics">SVG</abbr>
+semicircle path at a given percentage.
+
+<SvgArtboardControlled
+  diameter={300}
+  padding={20}
+  percent={0}
+/>
+
+## Appearance and Expectations
+
+A retangular box divided into two sections should appear.
+
+The larger section contains a transparent circle outlined with 50 dots equally spaced arond its circumference.
+
+The smaller section contains two linked form controls each of which enable the definition of an integer from zero to one hundred. These control the percentage of the semi-circle that will be drawn on the stage.
+
+Changing the value of either input should result in a pink semicircle being drawn from 12 o'clock to a point representative of the percentage in a clockwise direction.
+
+```jsx
+export default function Page () {
+  return (
+    <>
+      <h1>SVG Moon</h1>
+      <SvgArtboardControlled />
+    </>
+  )
+}
+```

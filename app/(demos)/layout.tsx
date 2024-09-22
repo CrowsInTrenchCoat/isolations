@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Nameplate } from '@/app/nameplate'
 import { Navigation } from './navigation'
 import '@/app/globals.scss'
+import '@/app/highlight.scss'
 
 export const metadata: Metadata = {
   title: "Isolations",

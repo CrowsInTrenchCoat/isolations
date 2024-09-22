@@ -1,14 +1,15 @@
 'use client'
 
 import React from 'react'
-import { SvgArtboardControlled } from './svg-artboard-controlled'
-import './style.scss'
+import Copy from './page-copy.mdx'
+import { Markdown } from '@/app/markdown'
 
 export default function Page () {
   return (
     <>
-      <h1>SVG Moon</h1>
-      <SvgArtboardControlled />
+      <Markdown>
+        <Copy />
+      </Markdown>
     </>
   )
 }
