@@ -4,7 +4,6 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { ClosedInterval, OpenInterval } from '@/lib/interval'
 import { SvgArtboard } from './svg-artboard'
 import { NumberRangeInput } from '@/form/number-range-input'
-import { TextInput } from '@/form/text-input'
 
 export function SvgArtboardControlled () {
   const [ squishLeft, setSquishLeft ] = useState<number>(100)
@@ -16,23 +15,28 @@ export function SvgArtboardControlled () {
     const phase = parseFloat(event.currentTarget.value)
     setMoonPhase(phase)
     if (phase === 0) {
+      // New Moon (type 1)
       setSquishLeft(100)
       setSquishRight(0)
     } else if (phase === 1) {
+      // New Moon (type 2)
       setSquishLeft(0)
       setSquishRight(100)
     } else if (phase > 0 && phase < 0.5) {
+      // Squish Left
       const cents = new ClosedInterval(0, 100)
       const value = (new ClosedInterval(0, 0.5)).translate(phase, cents)
       const nextSquishLeft = cents.reflect(value)
       setSquishLeft(nextSquishLeft)
       setSquishRight(0)
     } else if (phase > 0.5 && phase < 1) {
+      // Squish Right
       const cents = new ClosedInterval(0, 100)
       const nextSquishRight = (new ClosedInterval(0.51, 1)).translate(phase, cents)
       setSquishLeft(0)
       setSquishRight(nextSquishRight)
     } else {
+      // Full Moon
       setSquishLeft(0)
       setSquishRight(0)
     }
@@ -40,15 +44,15 @@ export function SvgArtboardControlled () {
 
   useEffect(() => {
     const interval = (new ClosedInterval(0, 1))
-      .withLabel('New', new ClosedInterval(0))
+      .withLabel('New Moon', new ClosedInterval(0))
       .withLabel('Waxing Crescent', new OpenInterval(0, 0.25))
       .withLabel('First Quarter', new ClosedInterval(0.25))
       .withLabel('Waxing Gibbous', new OpenInterval(0.25, 0.50))
-      .withLabel('Full', new ClosedInterval(0.50))
+      .withLabel('Full Moon', new ClosedInterval(0.50))
       .withLabel('Waning Gibbous', new OpenInterval(0.50, 0.75))
       .withLabel('Last Quarter', new ClosedInterval(0.75))
       .withLabel('Waning Crescent', new OpenInterval(0.75, 1))
-      .withLabel('New', new ClosedInterval(1))
+      .withLabel('New Moon', new ClosedInterval(1))
 
     setMoonPhaseName(interval.label(moonPhase))
   }, [moonPhase])
@@ -62,8 +66,17 @@ export function SvgArtboardControlled () {
           squishLeft={squishLeft}
           squishRight={squishRight}
         />
+        <div className="box-preview-label">{moonPhaseName}</div>
       </div>
       <div className="box-actions">
+        <NumberRangeInput
+          label="Moon Phase"
+          min={0}
+          max={1}
+          onChange={handleChangeMoonPhase}
+          step={0.01}
+          value={moonPhase}
+        />
         <NumberRangeInput
           label="Squish Left"
           min={0}
@@ -79,19 +92,6 @@ export function SvgArtboardControlled () {
           step={1}
           value={squishRight}
           disabled
-        />
-        <NumberRangeInput
-          label="Moon Phase"
-          min={0}
-          max={1}
-          onChange={handleChangeMoonPhase}
-          step={0.01}
-          value={moonPhase}
-        />
-        <TextInput
-          disabled
-          label="Moon Phase Name"
-          value={moonPhaseName}
         />
       </div>
     </div>
