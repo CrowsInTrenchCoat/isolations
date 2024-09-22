@@ -1,0 +1,154 @@
+
+////////////////////////////////////////////////////////////
+// Mixins                                                 //
+// While it's generally better to use placeholders when   //
+// styles are shared we need to use mixins because the    //
+// pseudo selector used to style the form controls cannot //
+// be combined into one bloc. Sadness.                    //
+////////////////////////////////////////////////////////////
+
+@mixin thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: 0px; /* Centers thumb on the track */
+  background-color: var(--thumb-background-color);
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+@mixin thumb-disabled {
+  background-color: var(--disabled-thumb-background-color);
+  opacity: var(--disabled-thumb-opacity);
+}
+@mixin thumb-focused {
+  outline-color: var(--focused-thumb-outline-color);
+  outline-offset: var(--focused-thumb-outline-offset);
+  outline-style: var(--focused-thumb-outline-style);
+  outline-width: var(--focused-thumb-outline-width);
+}
+@mixin track {
+  box-sizing: var(--track-box-sizing);
+  background-color: var(--track-background-color);
+  border-color: var(--track-border-color);
+  border-radius: var(--track-border-radius);
+  border-style: var(--track-border-style);
+  border-width: var(--track-border-width);
+  height: 1rem;
+}
+@mixin track-disabled {
+  background-color: var(--disabled-track-background-color);
+  opacity: var(--disabled-track-opacity);
+}
+
+
+////////////////////////////////////////////////////////////
+// Styles                                                 //
+////////////////////////////////////////////////////////////
+
+.number-range-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+
+  // Default variables
+  --number-background-color: #fff;
+  --number-border-color: #767676;
+  --number-border-radius: 0.25rem;
+  --number-border-style: solid;
+  --number-border-width: 1px;
+  --thumb-background-color: #767676;
+  --track-background-color: #fff;
+  --track-border-color: #767676;
+  --track-border-radius: 99999rem;
+  --track-border-style: solid;
+  --track-border-width: 1px;
+  --track-box-sizing: content-box;
+
+  // Focus variables
+  --focused-thumb-outline-color: #222;
+  --focused-thumb-outline-offset: 0.125rem;
+  --focused-thumb-outline-style: solid;
+  --focused-thumb-outline-width: 3px;
+
+  // Disabled variables
+  --disabled-number-opacity: 0.4;
+  --disabled-thumb-background-color: #767676;
+  --disabled-thumb-opacity: 1;
+  --disabled-track-background-color: #fff;
+  --disabled-track-opacity: 0.4;
+
+  label {
+    font-size: 0.875rem;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+    background-color: var(--number-background-color);
+    border-color: var(--number-border-color);
+    border-radius: var(--number-border-radius);
+    border-style: var(--number-border-style);
+    border-width: var(--number-border-width);
+    text-align: right;
+    width: 3rem;
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+    &::-webkit-outter-spin-button {
+      display: none;
+    }
+    &[disabled] {
+      opacity: var(--disabled-number-opacity);
+    }
+  }
+
+  input[type="range"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+      &::-moz-range-thumb {
+        @include thumb-focused;
+      }
+      &::-webkit-slider-thumb {
+        @include thumb-focused;
+      }
+    }
+    &[disabled] {
+      &::-moz-range-thumb {
+        @include thumb-disabled;
+      }
+      &::-webkit-slider-thumb {
+        @include thumb-disabled;
+      }
+      &::-moz-range-track {
+        @include track-disabled;
+      }
+      &::-webkit-slider-runnable-track {
+        @include track-disabled;
+      }
+    }
+
+    // Track
+    &::-moz-range-track {
+      @include track;
+    }
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+
+    // Thumb
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+    &::-webkit-slider-thumb {
+      @include thumb;
+    }
+  }
+}

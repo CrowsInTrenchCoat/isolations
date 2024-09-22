@@ -4,7 +4,13 @@ import Link from 'next/link'
 import { IconMoon } from '@/icons/moon'
 import { IconSemicircle } from '@/icons/semicircle'
 
-export function Navigation () {
+interface NavigationProps {
+  showDescription? : boolean,
+}
+
+export function Navigation (props : NavigationProps) {
+  const { showDescription: _showDescription } = props
+  const showDescription = _showDescription ?? true
   return (
     <div id="isolation-navigation" className="drawer">
       <nav>
@@ -18,7 +24,7 @@ export function Navigation () {
                 className="drawer-list-item-name"
                 href="/svg-moon"
               >Moon Phase</Link>
-              <p>SVG element that illustates all phases of the moon.</p>
+              {showDescription && <p>SVG element that illustates all phases of the moon.</p>}
             </div>
           </li>
           <li className="drawer-list-item">
@@ -30,7 +36,7 @@ export function Navigation () {
                 className="drawer-list-item-name"
                 href="/svg-semicircle"
               >Semicircle</Link>
-              <p>SVG component that draws a percentage-based semicircle.</p>
+              {showDescription && <p>SVG component that draws a percentage-based semicircle.</p>}
             </div>
           </li>
         </ul>

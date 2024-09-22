@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { lato } from '@/app/fonts'
+import { lato } from '@/fonts'
 
 interface MarkdownProps {
   children: ReactNode

@@ -1,3 +1,4 @@
+'use client'
 import { ChangeEvent, useState } from 'react'
 import { NumberRangeInput } from '@/form/number-range-input'
 import { SvgArtboard } from './svg-artboard'
@@ -18,15 +19,15 @@ export function SvgArtboardControlled (props : SvgArtboardControlledProps) {
   }
 
   return (
-    <div className="box">
-      <div className="box-preview">
+    <div className="figure">
+      <div className="figure-subject">
         <SvgArtboard
           diameter={diameter}
           padding={padding}
           percent={percent}
         />
       </div>
-      <div className="box-actions">
+      <div className="figure-actions">
         <NumberRangeInput
           label="Percent"
           min="0"

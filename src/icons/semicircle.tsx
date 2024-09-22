@@ -1,7 +1,13 @@
 import { SvgSemicircle } from '@/svg/semicircle'
 
-export function IconSemicircle (props : { size : number }) {
-  const { size } = props
+interface IconSemicircleProps {
+  size : number,
+  start?: number,
+  stop?: number,
+}
+
+export function IconSemicircle (props : IconSemicircleProps) {
+  const { size, start, stop } = props
   const radius = size / 2
   return (
     <svg
@@ -16,8 +22,8 @@ export function IconSemicircle (props : { size : number }) {
         cx={radius}
         cy={radius}
         r={radius}
-        start={25}
-        stop={100}
+        start={start ?? 25}
+        stop={stop ?? 100}
         fill="#bbb"
       />
     </svg>

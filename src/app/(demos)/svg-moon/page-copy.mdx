@@ -1,0 +1,51 @@
+import { SvgDemo } from './svg-demo'
+import { FigureCubicCircle } from './figure-cubic-circle'
+import { Svg as CubicCircle } from './figure-cubic-circle'
+import { colors as c } from '@/colors'
+
+# Moon Phase
+
+A React component that draws an <abbr title="Scalable Vector Graphics">SVG</abbr> path that illustrates a given phase of the moon.
+
+<SvgDemo diameter={300} />
+
+## Backstory
+
+I wanted to build a simple web browser extension that diplayed the current phase of the moon when I opening a new tab. I decided to use the [Visual Crossing Weather Data & API](https://www.visualcrossing.com/) which returns the data I need. Now all I needed to do was figure out how to draw a picture of the moon in a web browser at every possible phase. Fun!
+
+Oh, wait! *...How do we even do that?!?!?!*
+
+## Circle Structure
+
+My design-brain informed me that I needed to start with a circle composed of points placed at the top, right, bottom, and left-most ends of the circumference of the circle. With a structure like this I should be able to adjust the coordinates of the left or right points to create the illusion of a shadowed moon.
+
+<figure className="figure">
+  <div className="figure-subject">
+    <CubicCircle
+      radius="300"
+      fill={c.hotpink}
+      stroke={c.black}
+    />
+  </div>
+  <figcaption className="figure-caption">
+    Illustration of a circle drawn with four cubic bezier curves.
+  </figcaption>
+</figure>
+
+
+## Moonphase Property
+
+The Visual Crossing API can be asked to return a `moonphase` property for each day in the result set. This value is a number from zero to one.
+
+
+| Number    | Interval       | Name            |
+| --------- | -------------- | --------------- |
+| 0         | `[0.00, 0.00]` | New             |
+| 0–0.25    | `(0.00, 0.25)` | Waxing Crescent |
+| 0.25      | `[0.25, 0.25]` | First Quarter   |
+| 0.25–0.50 | `(0.25, 0.50)` | Waxing Gibbous  |
+| 0.50      | `[0.50, 0.50]` | Full            |
+| 0.50–0.75 | `(0.50, 0.75)` | Waning Gibbous  |
+| 0.75      | `[0.75, 0.75]` | Last Quarter    |
+| 0.75–1.00 | `(0.75, 1.00)` | Waning Crescent |
+| 1.00      | `[1.00, 1.00]` | New             |

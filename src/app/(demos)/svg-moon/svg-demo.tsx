@@ -2,10 +2,16 @@
 
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { ClosedInterval, OpenInterval } from '@/lib/interval'
-import { SvgArtboard } from './svg-artboard'
 import { NumberRangeInput } from '@/form/number-range-input'
+import { SvgMoonCircle } from '@/svg/moon-circle/moon-circle'
+import { colors } from '@/colors'
 
-export function SvgArtboardControlled () {
+interface SvgDemoProps {
+  diameter: number
+}
+
+export function SvgDemo (props : SvgDemoProps) {
+  const { diameter } = props
   const [ squishLeft, setSquishLeft ] = useState<number>(100)
   const [ squishRight, setSquishRight ] = useState<number>(0)
   const [ moonPhase, setMoonPhase ] = useState<number>(0)
@@ -58,17 +64,27 @@ export function SvgArtboardControlled () {
   }, [moonPhase])
 
   return (
-    <div className="box">
-      <div className="box-preview">
-        <SvgArtboard
-          border={3}
-          diameter={300}
-          squishLeft={squishLeft}
-          squishRight={squishRight}
-        />
+    <div className="figure">
+      <div className="figure-subject">
+        <svg
+          width={diameter}
+          height={diameter}
+          viewBox={`0 0 ${diameter} ${diameter}`}
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <SvgMoonCircle size={diameter} fill="black" />
+          <SvgMoonCircle
+            inset={3}
+            size={diameter}
+            squishLeft={squishLeft}
+            squishRight={squishRight}
+            fill={colors.hotpink}
+          />
+        </svg>
         <div className="box-preview-label">{moonPhaseName}</div>
       </div>
-      <div className="box-actions">
+      <div className="figure-actions">
         <NumberRangeInput
           label="Moon Phase"
           min={0}

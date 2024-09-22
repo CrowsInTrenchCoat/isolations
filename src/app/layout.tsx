@@ -1,10 +1,17 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import "./globals.scss"
 
 export const metadata: Metadata = {
   title: "JavaScript Laboratory",
   description: "Teeny-tiny javascript projects written by 17 crows in a lab coat.",
+}
+
+export const viewport : Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  userScalable: false
 }
 
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>
