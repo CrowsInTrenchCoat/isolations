@@ -3,12 +3,12 @@ import createMDX from '@next/mdx'
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  output: "export",
-  basePath: "/isolations",
+  output: 'export',
+  basePath: '/isolations',
   images: {
-    unoptimized: true,
+    unoptimized: true
   },
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx']
 }
 
 const withMDX = createMDX({})
