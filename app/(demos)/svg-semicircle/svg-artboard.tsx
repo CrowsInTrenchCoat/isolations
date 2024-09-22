@@ -2,9 +2,8 @@ import React, { ReactElement, SVGProps, useEffect, useState } from 'react'
 
 import { Svg } from '@/svg'
 import { SvgSemicircle } from '@/svg/semicircle'
-
-import { calcCircularCoordinates } from '@/lib/calc-circular-coordinates'
 import { readWholeNumber } from '@/lib/read-whole-number'
+import { colors } from '@/app/colors'
 
 export interface SvgArtboardProps {
   diameter : number,
@@ -54,9 +53,9 @@ export function SvgArtboard (props : SvgArtboardProps) {
     <Svg width={d} height={d} viewBox={viewBox}>
       {dots}
       <SvgSemicircle
-        className="blue"
         cx={center.x}
         cy={center.y}
+        fill={colors.hotpink}
         r={radius}
         start={0}
         stop={percent}

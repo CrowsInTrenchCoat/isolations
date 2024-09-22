@@ -4,8 +4,6 @@ import React from 'react'
 import Description from './page-description.mdx'
 import { SvgArtboardControlled } from './svg-artboard-controlled'
 
-import './style.scss'
-
 export default function Page () {
   return (
     <>
