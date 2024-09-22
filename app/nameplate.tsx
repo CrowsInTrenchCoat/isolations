@@ -1,15 +1,14 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { bangers } from '@/app/fonts'
 
 export function Nameplate () {
   const pathname = usePathname()
   console.log(pathname)
   return (
     <header id="nameplate">
-      <span id="nameplate-name">Laboratory</span>
-      {pathname !== '/' && <Link id="nameplate-back" href="/">Back</Link>}
+      <span id="nameplate-name" className={bangers.className}><abbr title="JavaScript">JS</abbr> Laboratory</span>
     </header>
   )
 }

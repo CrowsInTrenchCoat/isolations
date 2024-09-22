@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 
 import "./globals.scss"
-import { Nameplate } from './nameplate'
 
 export const metadata: Metadata = {
-  title: "Isolations",
-  description: "My super-small javascript projects",
+  title: "JavaScript Laboratory",
+  description: "Teeny-tiny javascript projects written by 17 crows in a lab coat.",
 }
 
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>
@@ -15,13 +14,7 @@ export default function RootLayout(props : RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-        <Nameplate />
-        <main id="content">
-          {children}
-        </main>
-        <footer id="footer">
-          <a className="repo-link" href="https://github.com/CrowsInTrenchCoat/isolations">GitHub Repo</a>
-        </footer>
+        {children}
       </body>
     </html>
   )
