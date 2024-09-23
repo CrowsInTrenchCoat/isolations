@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-
+import { lato } from '@/fonts'
 import "./globals.scss"
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout(props : RootLayoutProps) {
   const { children } = props
   return (
     <html lang="en">
-      <body>
+      <body className={lato.className}>
         {children}
       </body>
     </html>

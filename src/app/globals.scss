@@ -5,7 +5,6 @@ Colors
 */
 
 :root {
-  --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --black: #131313;
   --hotpink: #ff69b4;
   --border-radius: 0.75rem;
@@ -18,7 +17,6 @@ Colors
 }
 
 html {
-  font-family: var(--system-ui);
   font-size: 16px;
 }
 
@@ -43,6 +41,10 @@ abbr {
   height:1px;
   overflow:hidden;
 }
+
+////////////////////////////////////////////////////////////
+// Demo Views                                             //
+////////////////////////////////////////////////////////////
 
 #nameplate {
   background: var(--black);
@@ -86,10 +88,26 @@ abbr {
   }
 }
 #structure {
-
+  animation: fade-in 750ms;
 }
-#content {
-  // max-width: 36rem;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#stuffs {
+  &[data-size="small"] {
+    // Soon?
+  }
+  &[data-size="medium"] {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 2rem;
+  }
+  &[data-size="large"] {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+  }
 }
 #footer {
   margin: 2rem 0;
@@ -99,24 +117,7 @@ abbr {
     text-decoration: none
   }
 }
-
-
-
-.text-input {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: space-between;
-  label {
-    font-size: 0.875rem;
-  }
-  input[type="text"] {
-
-  }
-}
-
-
-// Isolation Navigation Drawer
+// Demo Navigation Drawer
 .drawer-list {
   display: flex;
 
@@ -266,29 +267,5 @@ abbr {
       font-size: 0.9375;
       font-style: italic;
     }
-  }
-}
-
-
-#structure {
-  animation: fade-in 750ms;
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-#stuffs {
-  &[data-size="small"] {
-    // Soon?
-  }
-  &[data-size="medium"] {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 2rem;
-  }
-  &[data-size="large"] {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 2rem;
   }
 }
