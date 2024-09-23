@@ -43,7 +43,7 @@ abbr {
 }
 
 ////////////////////////////////////////////////////////////
-// Demo Views                                             //
+// Demo Template                                          //
 ////////////////////////////////////////////////////////////
 
 #nameplate {
@@ -107,6 +107,9 @@ abbr {
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 2rem;
+    #content {
+      max-width: 60ch;
+    }
   }
 }
 #footer {
