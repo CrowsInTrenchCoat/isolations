@@ -2,7 +2,7 @@ import React, { ReactElement, SVGProps, useEffect, useState } from 'react'
 
 import { Svg } from '@/svg'
 import { SvgSemicircle } from '@/svg/semicircle'
-import { readWholeNumber } from '@/lib/read-whole-number'
+import { readWholeNumber } from '@/lib/read/whole-number'
 import { colors } from '@/colors'
 
 export interface SvgArtboardProps {
