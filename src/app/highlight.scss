@@ -1,6 +1,33 @@
+@mixin language-tag($name) {
+  content: $name;
+  height: 1rem;
+  padding: 0.25rem 0 0.25rem 0.5rem;
+  color: #767676;
+  font-size: 0.625rem;
+  position: absolute;
+  inset: auto -1px calc(-1.5rem - 2px) auto;
+}
+
 pre:has(.hljs) {
   border: 1px solid #ccc;
   padding: 1rem;
+  position: relative;
+  code {
+    background: inherit;
+  }
+}
+
+pre:has(.hljs.language-js):after {
+  @include language-tag('JavaScript')
+}
+pre:has(.hljs.language-js):after {
+  @include language-tag('JavaScript + JSX')
+}
+pre:has(.hljs.language-ts):after {
+  @include language-tag('TypeScript')
+}
+pre:has(.hljs.language-tsx):after {
+  @include language-tag('TypeScript + JSX')
 }
 
 .hljs {

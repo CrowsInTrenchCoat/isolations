@@ -3,3 +3,16 @@ import { SvgDemo } from './svg-demo'
 # Pie Chart
 
 <SvgDemo />
+
+## Interface
+
+Here's the code that renders the pie chart in the demo above.
+
+```tsx
+<PieChart diameter={300} >
+  <Slice value={1} fill="black" />
+  <Slice value={1} fill="hotpink" />
+  <Slice value={1} fill="black" />
+  <Slice value={1} fill="hotpink" />
+</PieChart>
+```
