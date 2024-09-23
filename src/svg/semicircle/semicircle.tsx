@@ -14,7 +14,7 @@ export interface SvgSemicircleProps extends SVGProps<SVGPathElement> {
 }
 
 export function SvgSemicircle (props : SvgSemicircleProps) {
-  const { cx, cy, d, r: radius, start, stop, ...atts } = props
+  const { cx, cy, d, r, start, stop, ...atts } = props
 
   const percent = stop - start
 
@@ -27,7 +27,7 @@ export function SvgSemicircle (props : SvgSemicircleProps) {
   if (percent === 100) {
     const circleAtts = atts as SVGProps<SVGCircleElement>
     return (
-      <circle cx={cx} cy={cy} r={radius} {...circleAtts} />
+      <circle cx={cx} cy={cy} r={r} {...circleAtts} />
     )
   }
 
@@ -36,15 +36,14 @@ export function SvgSemicircle (props : SvgSemicircleProps) {
     const angle = (percent - 0) * (360 - 0) / (100 - 0) + 0
     const radians = (Math.PI / 180) * angle;
     const coords = {
-      x: cx + radius * Math.cos(radians),
-      y: cy + radius * Math.sin(radians),
+      x: cx + r * Math.cos(radians),
+      y: cy + r * Math.sin(radians),
     }
     return coords
   }
 
   const alpha = calcPoint(start)
   const omega = calcPoint(stop)
-  const r = radius
   const largeArc = percent > 50 ? 1 : 0
   const sweep = 1
   const rotation = 0
