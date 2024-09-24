@@ -1,12 +1,9 @@
-import { ComponentProps, isValidElement, ReactElement, useEffect, useState } from 'react'
+import { ComponentProps, isValidElement, ReactElement, ReactNode, useEffect, useState } from 'react'
 import { readWholeNumber } from '@/lib/read/whole-number'
-import { SliceProps } from '@/svg/pie-chart'
-import { SvgSemicircle, SvgSemicircleProps } from '@/svg/semicircle'
-
-export type PieChartChild = ReactElement<SliceProps> | ReactElement<SliceProps>[]
+import { SvgSemicircle } from '@/svg/semicircle'
 
 export interface PieChartProps extends ComponentProps<'div'> {
-  children : PieChartChild,
+  children : ReactNode,
   diameter : number,
   padding? : number,
   inset? : number,
@@ -22,11 +19,10 @@ export function PieChart (props : PieChartProps) {
   const inset = _inset && _inset > 0 ? _inset : 0
   const r = (d / 2) - p
   const viewBox = `${d/2 * -1} ${d/2 * -1} ${d} ${d}`
-
-  const [ shapeProps, setShapeProps ] = useState<SvgSemicircleProps[]>([])
+  const [ directDescendants, setDirectDescendants ] = useState<ReactNode>([])
 
   useEffect(() => {
-    let nodes : ReactElement<SliceProps>[]
+    let nodes : ReactElement[]
     if (children && Array.isArray(children)) {
       nodes = children
     } else if (children && isValidElement(children)) {
@@ -35,43 +31,65 @@ export function PieChart (props : PieChartProps) {
       nodes = []
     }
 
-    let total = 0
-    const itemProps = []
-    for (const node of nodes) {
-      const { props : { value, ...atts } } = node
-      if (typeof value !== 'number' || !(value > 0)) {
-        console.error('Slice must have a value props that is a positive number.')
-        break
+    const isSlice = (aught : any) => (
+      aught &&
+      typeof aught.type === 'function' &&
+      aught.type.name === 'Slice' &&
+      typeof aught.props.value === 'number'
+    )
+
+    // Recursive array reducer to determine total.
+    const totalReducer = (acc : number, node : ReactElement) : number => {
+      if (Array.isArray(node)) {
+        return node.reduce(totalReducer, acc)
+      } else if (isSlice(node)) {
+        return acc + node.props.value
+      } else {
+        return acc
       }
-      total += value
-      itemProps.push({ value, ...atts })
     }
 
+    // Recursive array reducer to rewrite children
     let start = 0
-    const nextShapeProps : SvgSemicircleProps[] = []
-    for (const index in itemProps) {
-      const item = itemProps[index]
-      const { value, ...atts } = item
-      const percent = (value * 100) / total
-      const stop = percent + start
-      nextShapeProps.push({ cx, cy, r : r - inset, start, stop, ...atts })
-      start = stop
+    let index = -1
+    const total = nodes.reduce(totalReducer, 0)
+    const childrenReducer = (acc : ReactElement[], node : ReactElement) : ReactElement[] => {
+      index++
+      if (Array.isArray(node)) {
+        return node.reduce(childrenReducer, acc)
+      } else if (isSlice(node)) {
+        const { value, ...atts } = node.props
+        const percent = (value * 100) / total
+        const stop = percent + start
+        acc.push((
+          <SvgSemicircle
+            key={index}
+            {...atts}
+            cx={cx}
+            cy={cy}
+            r={r - inset}
+            start={start}
+            stop={stop}
+            value={value}
+          />
+        ))
+        start = stop
+        return acc
+      } else {
+        acc.push(node)
+        return acc
+      }
     }
 
-    setShapeProps(nextShapeProps)
+    const nextDirectDescendants = nodes.reduce(childrenReducer, [])
+
+    setDirectDescendants(nextDirectDescendants)
   }, [children])
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={d}
-      height={d}
-      viewBox={viewBox}
-    >
+    <svg width={d} height={d} viewBox={viewBox}>
       {inset > 0 && <SvgSemicircle cx={cx} cy={cx} r={r} start={0} stop={100} />}
-      {shapeProps.map((props, index) => {
-        return <SvgSemicircle key={index} {...props} />
-      })}
+      {directDescendants}
     </svg>
   )
 }
