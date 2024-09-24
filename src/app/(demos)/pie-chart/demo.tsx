@@ -2,11 +2,11 @@
 
 import { PieChart, Slice } from '@/svg/pie-chart'
 
-interface SvgDemoProps {
+interface DemoProps {
   diameter: number
 }
 
-export function SvgDemo (props : SvgDemoProps) {
+export function Demo (props : DemoProps) {
   return (
     <>
       <div className="figure">

@@ -6,11 +6,11 @@ import { NumberRangeInput } from '@/form/number-range-input'
 import { SvgMoonCircle } from '@/svg/moon-circle/moon-circle'
 import { colors } from '@/colors'
 
-interface SvgDemoProps {
+interface DemoProps {
   diameter: number
 }
 
-export function SvgDemo (props : SvgDemoProps) {
+export function Demo (props : DemoProps) {
   const { diameter } = props
   const [ squishLeft, setSquishLeft ] = useState<number>(100)
   const [ squishRight, setSquishRight ] = useState<number>(0)
