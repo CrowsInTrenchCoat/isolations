@@ -16,15 +16,12 @@ type RootLayoutProps = Readonly<{ children: React.ReactNode }>
 
 export default function RootLayout(props : RootLayoutProps) {
   const { children } = props
-
   return (
-    <html lang="en">
-      <body>
-        <Nameplate />
-        <div id="structure">
-          <Main>{children}</Main>
-        </div>
-      </body>
-    </html>
+    <>
+      <Nameplate />
+      <div id="structure">
+        <Main>{children}</Main>
+      </div>
+    </>
   )
 }
