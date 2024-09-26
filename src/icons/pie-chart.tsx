@@ -11,9 +11,9 @@ export function IconPieChart (props : IconPieChartProps) {
   return (
     <PieChart diameter={size} inset={inset}>
       <Slice value={1} fill="black" />
-      <Slice value={1} fill="hotpink" />
+      <Slice value={1} fill="hotpink" className="fill-background" />
       <Slice value={1} fill="black" />
-      <Slice value={1} fill="hotpink" />
+      <Slice value={1} fill="hotpink" className="fill-background" />
     </PieChart>
   )
 }

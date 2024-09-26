@@ -6,11 +6,18 @@ import { Demo } from './demo'
 
 ## Inspiration
 
-Once upon a time, I was creating a teensy little app that would help me visualize information of some-sort and I wanted to include a pie chart. Unfortunately, I was unable to pin down a simple React component that did this for me.
+Once upon a time, I was creating a teensy little app that would help me visualize information of some-sort and I wanted to include a pie chart. Many of the available options that I found were either part of large component libraries or included features that I really did not need. I just wanted something simple that only included an SVG circle. Maybe I could create my own?
+
+This project lead me down a couple proverbial rabbit holes. But eventually I emerged unscathed and with a deeper understanding of SVG and React.
 
 ## Interface
 
-Here's the code that renders the pie chart in the demo above.
+I was inspired to create an interface that allowed me to work with two custom components `<PieChart />` and `<Slice />`.
+
+- __`<PieChart>`__ - Responsible for rendering the `<svg>` element.
+- __`<Slice>`__ - Defines data for each slice of the pie.
+
+With these pieces in place, I should be able to just render a simple pie chart wherever I need one like this:
 
 ```tsx
 <PieChart diameter={300} >
@@ -20,3 +27,64 @@ Here's the code that renders the pie chart in the demo above.
   <Slice value={1} fill="hotpink" />
 </PieChart>
 ```
+
+My first implementation involved writing a process in `<PieChart>` that looped over `props.children`, read the data from each `<Slice>`, and drew an SVG shape element for each slice.
+
+And all was good in the world.
+
+until...
+
+## Issue 1: Dynamic Data
+
+I attempted to create a custom component that defined an array for slice configuration and then rendered `<Slice>` components inside of `<PieChart>`. This is a very common pattern in React development that is critcal to support in my opinion.
+
+Here's what my new implementation looks like:
+
+```tsx
+function MyPieChart () {
+  const slices = [
+    { value: 1, fill: 'black' },
+    { value: 1, fill: 'hotpink' },
+    { value: 1, fill: 'black' },
+    { value: 1, fill: 'hotpink' },
+  ]
+  return (
+    <PieChart diameter={300}>
+      {slices.map((slice, index) => {
+        return <Slice key={index} {...slice} />
+      })}
+    </PieChart>
+  )
+}
+```
+
+Unfortunately, no slices were drawn after I refactored my code.
+
+Sadness.
+
+## Issue #2: Accessibility
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element">SVG supports a plethora of elements</a>. Now, I could argue that *"retangles have no place in piecharts!"* or that *"I can't think of a valid use case for the inclusion of an elipse in this context"*. There all all sorts of excuse I could make to exclude a large portion of SVG elements from my component. It does not take any amounts of mental gymnastics and I could even find myself agreeing with most of these arguments.
+
+That said, the `<svg>` element also supports [`<title>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title) and [`<desc>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc) descendant elements which are used to provide text alternatives to accessible technology.
+
+So I plugged these guys into my component like this:
+
+```tsx
+<PieChart diameter={300}>
+  <title>Example piece chart</title>
+  <desc>A circle divided equally into four quadrants...</desc>
+  <Slice value={1} fill="black" />
+  <Slice value={1} fill="hotpink" />
+  <Slice value={1} fill="black" />
+  <Slice value={1} fill="hotpink" />
+</PieChart>
+```
+
+This time the slices did appear but the `<title>` and `<desc>` elements never rendered.
+
+More sadness.
+
+## Okay, computer. I can refactor...
+
+My solution to issues number one and two involved creating 2 recursive reducers. One to calculate the sum of all slice values and another that converted instances of the `<Slice>` component into paths while perserving all other direct descendants of `props.children`.

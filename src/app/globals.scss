@@ -5,8 +5,19 @@ Colors
 */
 
 :root {
+
+  // Design Colors
+  --white: #fff;
   --black: #131313;
-  --hotpink: #ff69b4;
+  --hotpink: #ff69b4; // Small text #363636 and darker can be used
+  --hotblue: #68d1f7;
+
+  // Text colors best paired with white.
+  --blue-copy-aaa: #06537f;  // 7.2:1 with #fff
+  --pink-copy-aaa: #ad0057; // 7.2:1 with #fff
+  --grey-copy-aa: #767676; // 4.54:1 with #fff
+  --grey-copy-aaa: #595959; // 7:1 with #fff
+
   --border-radius: 0.75rem;
   --border-color: #b6b6b6;
   --figure-secondary-background-color: #68d1f7; // Best paired with #333
@@ -48,7 +59,7 @@ abbr {
 
 #nameplate {
   background: var(--black);
-  color: #fff;
+  color: var(--white);
   display: flex;
     align-items: center;
     gap: 1rem;
@@ -71,7 +82,7 @@ abbr {
   &-back {
     background: rgba(255,255,255, 0.2);
     border-radius: 999999rem;
-    color: #fff;
+    color: var(--white);
     font-size: 0.75rem;
     padding: 0.365rem 0.75rem;
     text-decoration: none;
@@ -95,18 +106,16 @@ abbr {
   to { opacity: 1; }
 }
 #stuffs {
+  display: grid;
+  gap: 2rem;
   &[data-size="small"] {
     // Soon?
   }
   &[data-size="medium"] {
-    display: grid;
     grid-template-columns: 150px 1fr;
-    gap: 2rem;
   }
   &[data-size="large"] {
-    display: grid;
     grid-template-columns: 300px 1fr;
-    gap: 2rem;
     #content {
       max-width: 60ch;
     }
@@ -120,6 +129,13 @@ abbr {
     text-decoration: none
   }
 }
+
+@property --fill {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+
 // Demo Navigation Drawer
 .drawer-list {
   display: flex;
@@ -135,8 +151,10 @@ abbr {
     gap: 1rem;
   }
   &-item-icon {
+    --radius: 30px;
+    --track: 5px;
     background: var(--hotpink);
-    color: #fff;
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,12 +169,44 @@ abbr {
     }
     svg {
       align-self: center;
+
+    }
+
+    .circular-icon {
+      .fill-background {
+        transition: fill 500ms ease-in-out;
+      }
+      position: relative;
+      z-index: 2;
+      &:hover {
+        color: light-blue;
+        --fill: 100%;
+        .fill-background {
+          fill: var(--white);
+        }
+      }
+      &::after {
+        content: '';
+        display: block;
+        height: calc(var(--radius) + calc(var(--track) * 2));
+        width: calc(var(--radius) + calc(var(--track) * 2));
+        position: absolute;
+          inset: calc(var(--track) * -1);
+          z-index: -1;
+        content: "";
+        border-radius: 999999999rem;
+        background: conic-gradient(
+          rgba(0, 0, 0, 0.2) var(--fill),
+          transparent var(--fill)
+        );
+        transition: --fill 350ms ease-in-out;
+      }
     }
   }
   &-item-text {
     // display:none;
 
-    background: #fff;
+    background: var(--white);
     color: var(--black);
     padding: 1rem 1rem 1rem 0;
     text-decoration: none;
@@ -179,21 +229,36 @@ abbr {
 
 .markdown {
   & > * {
-    margin: 1.4rem 1rem;
+    margin: 1.4rem 0;
+  }
+
+  a {
+    color: var(--darkpink);
+    &:has(code) {
+      text-decoration: none;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
+    code {
+      background-color: inherit;
+      font-size: 0.875em;
+    }
   }
+
+  strong code {
+    background-color: inherit;
+  }
+
   code {
-    background: #e6e6e6;
-    color: #333;
     font-family: Hack, mono;
     font-size: 0.875rem;
-    padding: 0.125rem 0.25rem;
   }
+
   p {
     line-height: 1.4;
   }
+
   table {
     border-collapse: collapse;
     margin-left: 0;
@@ -231,6 +296,12 @@ abbr {
       }
     }
   }
+
+  ul {
+    line-height: 1.4;
+    margin-left: 0.5rem;
+  }
+
   .figure {
     width: 100%;
     margin-left: 0;
