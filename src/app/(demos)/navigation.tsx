@@ -11,7 +11,8 @@ interface NavigationProps {
 
 export function Navigation (props : NavigationProps) {
   const { showDescription: _showDescription } = props
-  const showDescription = _showDescription ?? true
+  // const showDescription = _showDescription ?? true
+  const showDescription = true
   const iconSize = 30
   return (
     <div id="isolation-navigation" className="drawer">
@@ -56,7 +57,9 @@ function NavItem (props : NavItemProps) {
   const { icon, heading, href, copy, showCopy } = props
   return (
     <li className="drawer-list-item">
-      <div className="drawer-list-item-icon">{icon}</div>
+      <div className="drawer-list-item-icon">
+        <div className="circular-icon">{icon}</div>
+      </div>
       <div className="drawer-list-item-text">
         <Link className="drawer-list-item-name"href={href}>{heading}</Link>
         {showCopy && <p>{copy}</p>}

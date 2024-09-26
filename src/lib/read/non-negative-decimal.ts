@@ -22,6 +22,10 @@ function isWholeNumber (s : string) : boolean {
   return Boolean(s.match(/^(?:[1-9][0-9]*)*[0-9]$/))
 }
 
+/**
+ * Read an unsafe number that is expected to use decimal
+ * notation and be greater than or equal to zero.
+ */
 export function readNonNegativeDecimal (aught : any) : number {
   switch (typeof aught) {
     case 'string' : {

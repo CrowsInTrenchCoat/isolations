@@ -9,12 +9,13 @@
 }
 
 pre:has(.hljs) {
-  border: 1px solid #ccc;
-  padding: 1rem;
+  padding: 0.25rem;
   position: relative;
   code {
     background: inherit;
+    border: 1px solid #ccc;
   }
+  margin: 1.4rem 0 2.4rem;
 }
 
 pre:has(.hljs.language-js):after {
@@ -33,6 +34,9 @@ pre:has(.hljs.language-tsx):after {
 .hljs {
   background: #fefefe;
   color: #545454;
+  padding: 1rem;
+  display: block;
+  overflow-x: auto;
 }
 
 /* Comment */
@@ -50,7 +54,7 @@ pre:has(.hljs.language-tsx):after {
 .hljs-selector-class,
 .hljs-regexp,
 .hljs-deletion {
-  color: #d91e18;
+  color: var(--darkpink);
 }
 
 /* Orange */
@@ -97,6 +101,25 @@ pre:has(.hljs.language-tsx):after {
   font-weight: bold;
 }
 
+.language-tsx {
+  color: var(--pink-copy-aaa);
+  .hljs-name,
+  .hljs-tag,
+  .hljs-title {
+    color: var(--pink-copy-aaa);
+  }
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-addition,
+  .hljs-number {
+    color: var(--blue-copy-aaa);
+  }
+  .xml {
+    color: var(--grey-copy-aaa)
+  }
+}
+
 @media screen and (-ms-high-contrast: active) {
   .hljs-addition,
   .hljs-attribute,
@@ -112,16 +135,14 @@ pre:has(.hljs.language-tsx):after {
   .hljs-symbol,
   .hljs-type,
   .hljs-quote {
-        color: highlight;
-    }
+    color: highlight;
+  }
 
-    .hljs-keyword,
-    .hljs-selector-tag {
-        font-weight: bold;
-    }
+  .hljs-keyword,
+  .hljs-selector-tag {
+    font-weight: bold;
+  }
 }
-
-
 
 // Based on the "a11y-light" theme for highlight.js by @ericwbailey
 // Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css

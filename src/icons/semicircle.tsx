@@ -1,4 +1,5 @@
 import { SvgSemicircle } from '@/svg/semicircle'
+import { colors } from '@/colors'
 
 interface IconSemicircleProps {
   size : number,
@@ -18,13 +19,30 @@ export function IconSemicircle (props : IconSemicircleProps) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <SvgSemicircle
-        className="fill-foreground"
         cx={radius}
         cy={radius}
         r={radius}
+        start={0}
+        stop={100}
+        fill={colors.black}
+      />
+      <SvgSemicircle
+        className="fill-background"
+        cx={radius}
+        cy={radius}
+        r={radius - 2}
+        start={0}
+        stop={100}
+        fill={colors.hotpink}
+      />
+      <SvgSemicircle
+        className="fill-foreground"
+        cx={radius}
+        cy={radius}
+        r={radius - 2}
         start={start ?? 25}
         stop={stop ?? 100}
-        fill="#bbb"
+        fill={colors.black}
       />
     </svg>
   )
