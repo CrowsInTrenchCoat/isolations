@@ -59,7 +59,6 @@ function NavItem (props : NavItemProps) {
     <li className="drawer-list-item">
       <div className="drawer-list-item-icon">
         <div className="circular-icon">{icon}</div>
-
       </div>
       <div className="drawer-list-item-text">
         <Link className="drawer-list-item-name"href={href}>{heading}</Link>

@@ -169,7 +169,6 @@ abbr {
     }
     svg {
       align-self: center;
-
     }
 
     .circular-icon {
@@ -179,7 +178,7 @@ abbr {
       position: relative;
       z-index: 2;
       &:hover {
-        color: light-blue;
+        color: lightblue;
         --fill: 100%;
         .fill-background {
           fill: var(--white);
@@ -204,8 +203,6 @@ abbr {
     }
   }
   &-item-text {
-    // display:none;
-
     background: var(--white);
     color: var(--black);
     padding: 1rem 1rem 1rem 0;
