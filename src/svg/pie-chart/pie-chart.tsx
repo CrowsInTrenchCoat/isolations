@@ -1,3 +1,5 @@
+'use client'
+
 import { ComponentProps, isValidElement, ReactElement, ReactNode, useEffect, useState } from 'react'
 import { readWholeNumber } from '@/lib/read/whole-number'
 import { SvgSemicircle } from '@/svg/semicircle'
