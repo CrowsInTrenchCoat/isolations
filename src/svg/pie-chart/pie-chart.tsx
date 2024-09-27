@@ -87,7 +87,13 @@ export function PieChart (props : PieChartProps) {
   }, [children])
 
   return (
-    <svg width={d} height={d} viewBox={viewBox}>
+    <svg
+      width={d}
+      height={d}
+      viewBox={viewBox}
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {inset > 0 && <SvgSemicircle cx={cx} cy={cx} r={r} start={0} stop={100} />}
       {directDescendants}
     </svg>
