@@ -1,3 +1,5 @@
+'use client'
+
 export interface SliceProps {
   className? : string,
   draggable?: boolean,
