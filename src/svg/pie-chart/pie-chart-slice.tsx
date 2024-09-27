@@ -14,5 +14,5 @@ export interface SliceProps {
 }
 
 export function Slice (_props : SliceProps) {
-  return null
+  return <text>This is the output of the slice component.</text>
 }
