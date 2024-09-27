@@ -88,3 +88,7 @@ More sadness.
 ## Okay, computer. I can refactor...
 
 My solution to issues number one and two involved creating 2 recursive reducers. One to calculate the sum of all slice values and another that converted instances of the `<Slice>` component into paths while perserving all other direct descendants of `props.children`.
+
+## Issue #3
+
+I was using `children[index].type.name` detect if a child component is or is not a `<Slice>`. This works really well during development. Unfortunately, it did not work at all after I built and deployed the component. After a bit of debugging, it appears that the JavaScript minifier converts `Slice` to a new, and exciting, value. In my case this was a single character `o`.
