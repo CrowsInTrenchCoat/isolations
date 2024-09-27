@@ -58,8 +58,10 @@ export function PieChart (props : PieChartProps) {
     const childrenReducer = (acc : ReactElement[], node : ReactElement) : ReactElement[] => {
       index++
       if (Array.isArray(node)) {
+        console.log('Reduce A', node)
         return node.reduce(childrenReducer, acc)
       } else if (isSlice(node)) {
+        console.log('Reduce B', node)
         const { value, ...atts } = node.props
         const percent = (value * 100) / total
         const stop = percent + start
@@ -78,14 +80,13 @@ export function PieChart (props : PieChartProps) {
         start = stop
         return acc
       } else {
+        console.log('Reduce C', node)
         acc.push(node)
         return acc
       }
     }
 
-    const nextDirectDescendants = nodes.reduce(childrenReducer, [])
-
-    setDirectDescendants(nextDirectDescendants)
+    setDirectDescendants(nodes.reduce(childrenReducer, []))
   }, [children])
 
   return (
