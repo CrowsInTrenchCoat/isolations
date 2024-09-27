@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 
-import Link from 'next/link'
 import { IconMoon } from '@/icons/moon'
 import { IconSemicircle } from '@/icons/semicircle'
 import { IconPieChart } from '@/icons/pie-chart'
+import { NavItem } from '@/app/(demos)/nav-item'
 
 interface NavigationProps {
   showDescription? : boolean,
@@ -11,11 +11,14 @@ interface NavigationProps {
 
 export function Navigation (props : NavigationProps) {
   const { showDescription: _showDescription } = props
-  // const showDescription = _showDescription ?? true
-  const showDescription = true
+  const showDescription = _showDescription ?? true
   const iconSize = 30
+
   return (
-    <div id="isolation-navigation" className="drawer">
+    <div
+      id="isolation-navigation"
+      className="drawer"
+    >
       <nav>
         <ul className="drawer-list">
           <NavItem
@@ -42,28 +45,5 @@ export function Navigation (props : NavigationProps) {
         </ul>
       </nav>
     </div>
-  )
-}
-
-interface NavItemProps {
-  icon : ReactNode,
-  heading : string,
-  href: string,
-  copy : string,
-  showCopy : boolean,
-}
-
-function NavItem (props : NavItemProps) {
-  const { icon, heading, href, copy, showCopy } = props
-  return (
-    <li className="drawer-list-item">
-      <div className="drawer-list-item-icon">
-        <div className="circular-icon">{icon}</div>
-      </div>
-      <div className="drawer-list-item-text">
-        <Link className="drawer-list-item-name"href={href}>{heading}</Link>
-        {showCopy && <p>{copy}</p>}
-      </div>
-    </li>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ReactNode, useEffect, useState } from 'react'
-import { Navigation } from './navigation'
+import { Navigation } from './nav'
 import { useMatchMedia } from '@/hooks/use-match-media'
 
 interface MainProps {
