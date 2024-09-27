@@ -1,3 +1,5 @@
+'use client'
+
 import { PieChart, Slice } from '@/svg/pie-chart'
 
 interface IconPieChartProps {
