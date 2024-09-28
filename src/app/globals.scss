@@ -18,32 +18,36 @@ Colors
   --grey-copy-aa: #767676; // 4.54:1 with #fff
   --grey-copy-aaa: #595959; // 7:1 with #fff
 
-  --border-radius: 0.75rem;
-  --border-color: #b6b6b6;
-  --figure-secondary-background-color: #68d1f7; // Best paired with #333
-}
+  --border-color-dark-010: rgba(0, 0, 0, 0.10);
+  --border-color-dark-020: rgba(0, 0, 0, 0.20);
+  --border-color-dark-025: rgba(0, 0, 0, 0.25);
 
+  // UI
+  --ui-background-color: #68d1f7; // 7.25:1 with #333
+  --ui-border-radius: 0.75rem;
+  --ui-border-color: #b6b6b6;
+  --ui-color: #333;
+  --ui-padding: 0.75rem;
+  --ui-button-background-color: #68d1f7;
+  --ui-button-color: #333;
+}
 * {
   box-sizing: border-box;
 }
-
 html {
   font-size: 16px;
 }
-
 body {
   margin: 0;
   padding: 0;
   min-width: 320px; // The smallest supported device width.
 }
-
 abbr {
   text-decoration-color: #aaa;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-thickness: 3px;
 }
-
 .screen-reader-only {
   position:absolute;
   left:-10000px;
@@ -237,6 +241,15 @@ abbr {
     margin: 1.4rem 0;
   }
 
+  & > *:not(.figure):not(table) {
+    margin-right: 1.4rem;
+    margin-left: 1.4rem;
+    @media (min-width: 500px) {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
   a {
     color: var(--darkpink);
     &:has(code) {
@@ -270,8 +283,6 @@ abbr {
     margin-right: 0;
     width: 100%;
     @media (min-width: 500px) {
-      margin-left: 1rem;
-      margin-right: 1rem;
       width: auto;
     }
     code {
@@ -279,7 +290,7 @@ abbr {
       padding: 0;
     }
     td, th {
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border-color-dark-025);
       padding: 0.375rem 0.625rem;
       &:first-child {
         border-left-width: 0;
@@ -314,9 +325,7 @@ abbr {
     @media (min-width: 500px) {
       border: none;
       border-radius: 0.75rem;
-      box-shadow: inset 0 0 0 1px var(--border-color);
-      margin-left: 1rem;
-      margin-right: 1rem;
+      box-shadow: inset 0 0 0 1px var(--border-color-dark-025);
       max-width: 325px;
       width: auto;
     }
@@ -331,15 +340,15 @@ abbr {
     }
     &-actions,
     &-caption {
-      background-color: var(--figure-secondary-background-color);
-      padding: 0.75rem;
+      background-color: var(--ui-background-color);
+      padding: var(--ui-padding);
       p {
         margin: 0;
         padding: 0;
       }
       @media (min-width: 500px) {
-        border-bottom-left-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
+        border-bottom-left-radius: var(--ui-border-radius);
+        border-bottom-right-radius: var(--ui-border-radius);
       }
     }
     &-caption {
