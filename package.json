@@ -14,7 +14,6 @@
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.13",
     "@types/mdx": "^2.0.13",
-    "escape-html": "^1.0.3",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
