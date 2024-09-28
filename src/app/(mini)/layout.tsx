@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Nameplate } from '@/app/nameplate'
 import '@/app/globals.scss'
 import '@/app/highlight.scss'
-import { Main } from '@/app/(mini)/main'
+import { Main } from './main'
 
 export const metadata: Metadata = {
   title: {
@@ -18,13 +18,11 @@ export default function RootLayout (props : RootLayoutProps) {
   const { children } = props
 
   return (
-    <html lang="en">
-      <body>
-        <Nameplate />
-        <div id="structure">
-          <Main>{children}</Main>
-        </div>
-      </body>
-    </html>
+    <>
+      <Nameplate />
+      <div id="structure">
+        <Main>{children}</Main>
+      </div>
+    </>
   )
 }
