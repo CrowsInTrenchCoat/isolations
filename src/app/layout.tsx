@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import { lato } from '@/fonts'
-import "./globals.scss"
 
 export const metadata: Metadata = {
   title: "JavaScript Laboratory",

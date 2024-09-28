@@ -1,22 +1,21 @@
 import type { Metadata } from 'next'
-import { Nameplate } from '@/app/nameplate'
-import '@/app/globals.scss'
-import '@/app/highlight.scss'
+import { Nameplate } from './nameplate'
 import { Main } from './main'
+import './layout.scss'
+import './highlight.scss'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | JavaScript Laboratory',
-    default: 'JavaScript Laboratory',
+    template: '%s | JS Laboratory',
+    default: 'JS Laboratory',
   },
-  description: "",
+  description: 'My super-small JavaScript projects.',
 }
 
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>
 
-export default function RootLayout (props : RootLayoutProps) {
+export default function RootLayout(props : RootLayoutProps) {
   const { children } = props
-
   return (
     <>
       <Nameplate />
