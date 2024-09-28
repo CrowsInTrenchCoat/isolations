@@ -87,7 +87,7 @@ function Footer () {
         <a
           className="repo-link"
           href="https://github.com/CrowsInTrenchCoat/isolations"
-        >GitHub Repo</a>
+        >View source code</a>
       </footer>
     </>
   )
