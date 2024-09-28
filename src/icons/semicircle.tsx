@@ -39,7 +39,7 @@ export function IconSemicircle (props : IconSemicircleProps) {
         className="fill-foreground"
         cx={radius}
         cy={radius}
-        r={radius - 2}
+        r={radius - 1}
         start={start ?? 25}
         stop={stop ?? 100}
         fill={colors.black}
