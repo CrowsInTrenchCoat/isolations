@@ -8,7 +8,7 @@
     padding: 0;
     > * {
       border: none;
-      border-right: 1px solid var(--border-color-dark-010);
+      border-right: 1px solid var(--black-010);
       padding: 0.75rem;
     }
     button {
@@ -26,8 +26,8 @@
   }
   &-body {
     background: #fff;
-    border-left: 1px solid var(--border-color-dark-025);
-    border-right: 1px solid var(--border-color-dark-025);
+    border-left: 1px solid var(--black-025);
+    border-right: 1px solid var(--black-025);
     iframe {
       border: none;
       display: block;
@@ -36,7 +36,7 @@
       min-height: 400px;
     }
     pre {
-      white-space: pre-wrap;
+      border: none;
       font-size: 0.75rem;
       line-height: 1.45;
       margin: 0;

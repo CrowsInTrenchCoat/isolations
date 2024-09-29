@@ -2,8 +2,8 @@
 
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { ClosedInterval, OpenInterval } from '@/lib/interval'
-import { NumberRangeInput } from '@/form/number-range-input'
-import { SvgMoonCircle } from '@/svg/moon-circle/moon-circle'
+import { NumberRangeInput } from '@/components/number-range-input'
+import { SvgMoonCircle } from '@/components/svg-moon-circle'
 import { colors } from '@/colors'
 
 interface DemoProps {

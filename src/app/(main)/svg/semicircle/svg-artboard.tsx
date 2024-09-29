@@ -1,7 +1,6 @@
 import React, { ReactElement, SVGProps, useEffect, useState } from 'react'
 
-import { Svg } from '@/svg'
-import { SvgSemicircle } from '@/svg/semicircle'
+import { SvgSemicircle } from '@/components/svg-semicircle'
 import { readWholeNumber } from '@/lib/read/whole-number'
 import { colors } from '@/colors'
 
@@ -50,7 +49,7 @@ export function SvgArtboard (props : SvgArtboardProps) {
   }, [ d ])
 
   return (
-    <Svg width={d} height={d} viewBox={viewBox}>
+    <svg width={d} height={d} viewBox={viewBox}>
       {dots}
       <SvgSemicircle
         cx={center.x}
@@ -60,6 +59,6 @@ export function SvgArtboard (props : SvgArtboardProps) {
         start={0}
         stop={percent}
       />
-    </Svg>
+    </svg>
   )
 }

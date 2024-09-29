@@ -1,0 +1,35 @@
+#manuscript {
+  --width: clamp(320px, 100vw, 500px);
+  display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  min-height: 100vh;
+
+  #manuscript-box {
+    width: var(--width);
+    padding: 1rem;
+    @media (min-width: 500px) {
+      padding: 0;
+    }
+  }
+
+  #nameplate {
+    background: var(--light-bg);
+    display: flex;
+      align-items: center;
+      gap: 1rem;
+    margin-bottom: 0.5rem;
+    &-name {
+      font-size: 2.50rem;
+      font-weight: 300;
+      a {
+        color: var(--light-copy);
+        text-decoration: none;
+      }
+      abbr {
+        text-decoration: none;
+      }
+    }
+  }
+}

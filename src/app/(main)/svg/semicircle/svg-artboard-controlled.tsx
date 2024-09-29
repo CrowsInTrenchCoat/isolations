@@ -1,6 +1,6 @@
 'use client'
 import { ChangeEvent, useState } from 'react'
-import { NumberRangeInput } from '@/form/number-range-input'
+import { NumberRangeInput } from '@/components/number-range-input'
 import { SvgArtboard } from './svg-artboard'
 
 export interface SvgArtboardControlledProps {

@@ -1,16 +1,8 @@
-'use client'
-
-import { useState } from 'react'
-import { PieChart, Slice } from '@/svg/pie-chart'
+import { PieChart } from '@/components/svg-pie-chart'
 import { readWholeNumber } from '@/lib/read/whole-number'
 
 interface DemoProps {
   diameter: number
-}
-
-interface SliceData {
-  value : number,
-  fill : string,
 }
 
 export function Demo (props : DemoProps) {
