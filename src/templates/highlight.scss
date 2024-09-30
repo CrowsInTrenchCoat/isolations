@@ -31,8 +31,11 @@ pre:has(.hljs) {
 pre:has(.hljs.language-js):after {
   @include language-tag('JavaScript')
 }
-pre:has(.hljs.language-js):after {
+pre:has(.hljs.language-jsx):after {
   @include language-tag('JavaScript + JSX')
+}
+pre:has(.hljs.language-scss):after {
+  @include language-tag('SCSS')
 }
 pre:has(.hljs.language-ts):after {
   @include language-tag('TypeScript')

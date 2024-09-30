@@ -1,4 +1,6 @@
 import { Demo } from './demo'
+import { Figure } from '@/components/figure'
+import { FigureGraphic } from '@/components/figure-graphic'
 import { FigureCubicCircle } from './figure-cubic-circle'
 import { Svg as CubicCircle } from './figure-cubic-circle'
 import { colors as c } from '@/colors'
@@ -19,19 +21,11 @@ Oh, wait! *...How do we even do that?!?!?!*
 
 My design-brain informed me that I need to start with a circle composed of points placed at the top, right, bottom, and left-most ends of the circumference of a circle. Once these points exist, it should be pretty easy to connect them with cubic bezier curves. With a structure like this it should be possible to adjust the coordinates of the left or right points along with the handles of the top and bottom points to create the illusion of a shadowed moon.
 
-<figure className="figure">
-  <div className="figure-subject">
-    <CubicCircle
-      radius="300"
-      fill={c.hotpink}
-      stroke={c.black}
-    />
-  </div>
-  <figcaption className="figure-caption">
-    Illustration of a circle drawn with four cubic bezier curves.
-  </figcaption>
-</figure>
-
+<FigureGraphic
+  caption="Illustration of a circle drawn with four cubic bezier curves."
+>
+  <CubicCircle radius="300" fill={c.hotpink} stroke={c.black} />
+</FigureGraphic>
 
 ## Moonphase Property
 

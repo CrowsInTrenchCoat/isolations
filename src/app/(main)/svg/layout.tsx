@@ -41,7 +41,11 @@ const navItems : NavItemInterface[] = [
 
 export default function SvgLayout (props : SvgLayoutProps) {
   const { children } = props
+  const data = {
+    name: 'SVG',
+    href: '/isolations/svg'
+  }
   return (
-    <Directory navItems={navItems} sectionName="SVG">{children}</Directory>
+    <Directory navItems={navItems} data={data}>{children}</Directory>
   )
 }

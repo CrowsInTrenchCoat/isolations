@@ -1,0 +1,32 @@
+import { Ref } from '@/components/ref'
+import { FigureCode } from '@/components/figure-code'
+
+# Nested Layouts in Next.js
+
+The following error appeared in my browser's console:
+
+```js
+Warning: Extra attributes from the server: class
+```
+
+When I searched for potential causes online I found a lot of people reporting that their issue stemmed from a browser extension injecting a class on the body element.
+
+In my case, this was not not issue.
+
+I had *accidentally* copied and pasted the root layout file into a sub directory of `@/app` without altering the file to remove the `<html>` and `<body>` tags from the nested `layout.tsx`.
+
+<FigureCode
+  caption="An abbreviated representation of the structure of my app directory."
+>
+```txt
+  ├── src
+  └── app
+      ├── (home)
+      │   └── layout.js
+      └── layout.js
+```
+</FigureCode>
+
+
+
+My problem came from rendering two `<body>` elements on each page load.

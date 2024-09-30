@@ -1,7 +1,7 @@
 import { NavItem } from './navigation-item'
 import { NavItemInterface } from '../types'
 
-interface NavigationProps {
+export interface NavigationProps {
   itemData: NavItemInterface[]
 }
 

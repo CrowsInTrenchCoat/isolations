@@ -1,0 +1,30 @@
+import { Ref } from '@/components/ref'
+
+# Overflowing `<pre>` Element
+
+I was creating a simple two column grid layout in HTML and CSS when I noticed that the contents of `<pre>` elements were causing the browser to render a horizontal scrollbar.
+
+## Solution
+
+Setting the `min-width` property of the grid item that contains the `<pre>` to zero is the solution that I have seen mentioned the most and it appears to work rather well for my purposes.
+
+```scss
+#template {
+  display: grid;
+  > * {
+    min-width: 0;
+  }
+}
+```
+
+## Reference
+- <Ref
+    href="https://daverupert.com/2017/09/breaking-the-grid/"
+    by="Dave Rupert"
+    date="2017"
+  >Breaking the Grid</Ref>
+- <Ref
+    href="https://css-tricks.com/preventing-a-grid-blowout/"
+    by="CSS Tricks"
+    date="2018"
+  >Preventing a Grid Blowout</Ref>

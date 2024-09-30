@@ -1,0 +1,29 @@
+figure[data-type="code"] {
+  .figure-body {
+    background: #fff;
+    border-top: 1px solid var(--black-025);
+    @media (min-width: 500px) {
+      border-right: 1px solid var(--black-025);
+      border-left: 1px solid var(--black-025);
+      border-top-left-radius: var(--ui-border-radius);
+      border-top-right-radius: var(--ui-border-radius);
+    }
+    pre {
+      border: none;
+      margin: 0;
+      padding: 0;
+      code {
+        border: none;
+      }
+    }
+  }
+  .figure-foot {
+    background: var(--ui-background-color);
+    border: 1px solid var(--black-010);
+    padding: var(--ui-padding);
+    @media (min-width: 500px) {
+      border-bottom-left-radius: var(--ui-border-radius);
+      border-bottom-right-radius: var(--ui-border-radius);
+    }
+  }
+}

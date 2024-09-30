@@ -1,5 +1,6 @@
 'use client'
 import { ChangeEvent, useState } from 'react'
+import { Figure } from '@/components/figure'
 import { NumberRangeInput } from '@/components/number-range-input'
 import { SvgArtboard } from './svg-artboard'
 
@@ -19,15 +20,18 @@ export function SvgArtboardControlled (props : SvgArtboardControlledProps) {
   }
 
   return (
-    <div className="figure">
-      <div className="figure-subject">
+    <Figure type="demo">
+      <Figure.Head>
+        <h2>Semicircle Demo</h2>
+      </Figure.Head>
+      <Figure.Body>
         <SvgArtboard
           diameter={diameter}
           padding={padding}
           percent={percent}
         />
-      </div>
-      <div className="figure-actions">
+      </Figure.Body>
+      <Figure.Foot>
         <NumberRangeInput
           label="Percent"
           min="0"
@@ -35,7 +39,7 @@ export function SvgArtboardControlled (props : SvgArtboardControlledProps) {
           onChange={handleChangePercent}
           value={percent}
         />
-      </div>
-    </div>
+      </Figure.Foot>
+    </Figure>
   )
 }

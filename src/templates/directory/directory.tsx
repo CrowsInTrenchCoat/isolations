@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { Content } from '@/components/content'
-import { Nameplate } from '@/components/nameplate'
+import { Nameplate, type DirectoryData } from '@/components/nameplate'
 import { Footer } from '@/components/footer'
 import { type NavItemInterface } from './types'
 import { Navigation } from './navigation'
@@ -12,14 +12,14 @@ import '../highlight.scss'
 interface DirectoryProps {
   children : ReactNode,
   navItems: NavItemInterface[],
-  sectionName : string,
+  data : DirectoryData,
 }
 
 export function Directory (props : DirectoryProps) {
-  const { children, navItems, sectionName } = props
+  const { children, navItems, data } = props
   return (
     <div id="template" data-name="directory">
-      <Nameplate sectionName={sectionName} />
+      <Nameplate directoryData={data} />
       <Navigation itemData={navItems} />
       <Content>{children}</Content>
       <Footer />

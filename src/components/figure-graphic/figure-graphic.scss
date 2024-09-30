@@ -1,0 +1,15 @@
+figure[data-type="graphic"] {
+  .figure-header {
+    display: none;
+  }
+  .figure-body {
+    width: auto;
+  }
+  @media (min-width: 500px) {
+    .figure-body {
+      border-top: 1px solid var(--ui-border-color);
+      border-top-left-radius: var(--ui-border-radius);
+      border-top-right-radius: var(--ui-border-radius);
+    }
+  }
+}

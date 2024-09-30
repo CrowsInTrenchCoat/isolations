@@ -1,6 +1,7 @@
 'use client'
 
 import React, { ChangeEvent, useEffect, useState } from 'react'
+import { Figure } from '@/components/figure'
 import { ClosedInterval, OpenInterval } from '@/lib/interval'
 import { NumberRangeInput } from '@/components/number-range-input'
 import { SvgMoonCircle } from '@/components/svg-moon-circle'
@@ -64,8 +65,9 @@ export function Demo (props : DemoProps) {
   }, [moonPhase])
 
   return (
-    <div className="figure">
-      <div className="figure-subject">
+    <Figure type="demo">
+      <Figure.Head><h2>Moon Phase Demo</h2></Figure.Head>
+      <Figure.Body>
         <svg
           width={diameter}
           height={diameter}
@@ -83,8 +85,8 @@ export function Demo (props : DemoProps) {
           />
         </svg>
         <div className="box-preview-label">{moonPhaseName}</div>
-      </div>
-      <div className="figure-actions">
+      </Figure.Body>
+      <Figure.Foot>
         <NumberRangeInput
           label="Moon Phase"
           min={0}
@@ -109,7 +111,7 @@ export function Demo (props : DemoProps) {
           value={squishRight}
           disabled
         />
-      </div>
-    </div>
+      </Figure.Foot>
+    </Figure>
   )
 }

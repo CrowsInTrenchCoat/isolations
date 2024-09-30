@@ -14,10 +14,14 @@ interface IsoLayoutProps { children: ReactNode }
 
 export default function IsoLayout (props : IsoLayoutProps) {
   const { children } = props
+  const data = {
+    name: 'Isolations',
+    href: '/isolations/iso'
+  }
   return (
     <Directory
+      data={data}
       navItems={[]}
-      sectionName="Isolations"
     >{children}</Directory>
   )
 }

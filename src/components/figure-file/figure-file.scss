@@ -1,0 +1,27 @@
+
+
+figure[data-type="file"] {
+  .figure-head {
+    display: flex;
+    padding: 0;
+    > * {
+      border: none;
+      border-right: 1px solid var(--black-010);
+      padding: 0.75rem;
+    }
+    button {
+      appearance: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-weight: 600;
+      &[data-is-selected] {
+        background: rgba(255, 255, 255, 0.4);
+      }
+      &:first-child {
+        @media (min-width: 500px) {
+          border-top-left-radius: var(--ui-border-radius);
+        }
+      }
+    }
+  }
+}

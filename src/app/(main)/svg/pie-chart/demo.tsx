@@ -1,3 +1,4 @@
+import { Figure } from '@/components/figure'
 import { PieChart } from '@/components/svg-pie-chart'
 import { readWholeNumber } from '@/lib/read/whole-number'
 
@@ -9,8 +10,9 @@ export function Demo (props : DemoProps) {
   const diameter = readWholeNumber(props.diameter) || 300
   return (
     <>
-      <div className="figure">
-        <div className="figure-subject">
+      <Figure type="demo">
+        <Figure.Head><h2>Pie Chart Demo</h2></Figure.Head>
+        <Figure.Body>
           <PieChart diameter={diameter} data={[
             { value: 1, fill: 'black' },
             { value: 1, fill: 'hotpink' },
@@ -19,11 +21,11 @@ export function Demo (props : DemoProps) {
             { value: 1, fill: 'black' },
             { value: 1, fill: 'hotpink' },
           ]} />
-        </div>
-        <div className="figure-actions">
+        </Figure.Body>
+        <Figure.Foot>
           <button>Add slice</button>
-        </div>
-      </div>
+        </Figure.Foot>
+      </Figure>
     </>
   )
 }

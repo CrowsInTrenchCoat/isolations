@@ -2,18 +2,21 @@
 
 /**
  * Renders a single HTML file for demonstration.
+ *
+ * @todo Add a caption prop.
  */
+import { Figure } from '@/components/figure'
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react'
-import './demo-html.scss'
+import './figure-file.scss'
 
 type View = 'demo' | 'source'
 type Lifecycle = 'setup' | 'ready'
 
-interface HtmlDemoProps extends ComponentPropsWithoutRef<'iframe'> {
+interface FigureFileProps extends ComponentPropsWithoutRef<'figure'> {
   src: string,
 }
 
-export function HtmlDemo (props : HtmlDemoProps) {
+export function FigureFile (props : FigureFileProps) {
   const { src, ...atts } = props
   const [ htmlSource, setHtmlSource ] = useState<string>('')
   const [ view, setView ] = useState<View>('demo')
@@ -37,8 +40,8 @@ export function HtmlDemo (props : HtmlDemoProps) {
   }
 
   return (
-    <div className="demo-html">
-      <div className="demo-html-head">
+    <Figure type="file">
+      <Figure.Head>
         <button
           data-is-selected={view === 'demo' ? '' : null}
           onClick={() => setView('demo')}
@@ -47,12 +50,12 @@ export function HtmlDemo (props : HtmlDemoProps) {
           data-is-selected={view === 'source' ? '' : null}
           onClick={() => setView('source')}
         >Source</button>
-      </div>
-      <div className="demo-html-body">
+      </Figure.Head>
+      <Figure.Body className="figure-body">
         {view === 'demo' && <iframe src={src} {...atts}></iframe>}
         {view === 'source' && <pre>{htmlSource}</pre>}
-      </div>
-      <div className="demo-html-foot"></div>
-    </div>
+      </Figure.Body>
+      <Figure.Foot />
+    </Figure>
   )
 }

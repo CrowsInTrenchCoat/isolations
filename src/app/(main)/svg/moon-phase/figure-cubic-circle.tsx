@@ -1,4 +1,4 @@
-import React from 'react'
+import { Figure } from '@/components/figure'
 
 interface SvgProps {
   fill : string,
@@ -13,10 +13,14 @@ interface SvgFigureCubicCircle extends SvgProps {
 export function FigureCubicCircle (props : SvgFigureCubicCircle) {
   const { fill, radius, stroke, title, ...atts } = props
   return (
-    <figure {...atts}>
-      <Svg fill={fill} radius={radius} stroke={stroke} />
-      <figcaption>{title}</figcaption>
-    </figure>
+    <Figure {...atts} type="graphic">
+      <Figure.Body>
+        <Svg fill={fill} radius={radius} stroke={stroke} />
+      </Figure.Body>
+      <Figure.Foot>
+        <figcaption>{title}</figcaption>
+      </Figure.Foot>
+    </Figure>
   )
 }
 
